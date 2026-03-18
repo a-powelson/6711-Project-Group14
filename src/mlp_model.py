@@ -53,13 +53,6 @@ def make_mlp(x_train, y_train):
             batch_size=2000, 
             validation_split=0.2)
     
-    """
-    Currently giving error: 
-        ValueError: Invalid dtype: str
-    Might need to check that everything is being read from csv as int/float
-    in preprocess.py
-    """
-            
     print(mod)
 
     return mod

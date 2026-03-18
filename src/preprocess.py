@@ -8,6 +8,7 @@ See README.md for references.
 import pandas as pd
 from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import train_test_split
+from sklearn import preprocessing
 
 """
 Load WSN-DS from csv
@@ -19,6 +20,11 @@ def load_data(file='../data/wsn-ds.csv'):
 
     # No null cells encountered
     # print(df.isnull().sum())
+
+    # Convert labels to ints
+    le = preprocessing.LabelEncoder()
+    le.fit(df.label)
+    df['label'] = le.transform(df.label)
 
     return df
 
