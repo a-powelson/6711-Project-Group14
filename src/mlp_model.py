@@ -49,10 +49,8 @@ def make_mlp(x_train, y_train):
     20% of the training portion, I'm not sure why. Need to look into that 
     more. - AP
     """
-    mod = model.fit(x_train, y_train, epochs=10, 
-            batch_size=2000, 
-            validation_split=0.2)
-    
-    print(mod)
+    model.fit(x_train, y_train, epochs=10, 
+        batch_size=2000, 
+        validation_split=0.2)
 
-    return mod
+    return model
