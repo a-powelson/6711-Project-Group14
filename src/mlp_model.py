@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Flatten, Dense
 
-def make_mlp(x_train, y_train):
+def make_mlp():
     """
     I'm not sure I fully understand these parameters, it seems we'll likely
     have to change them to suit our data -AP
@@ -44,6 +44,9 @@ def make_mlp(x_train, y_train):
                 loss='sparse_categorical_crossentropy',
                 metrics=['accuracy'])
 
+    return model
+
+def train_model(model, x_train, y_train):
     """
     In the GeeksForGeeks MLP tutorial they split the data, and then use only
     20% of the training portion, I'm not sure why. Need to look into that 
@@ -52,5 +55,5 @@ def make_mlp(x_train, y_train):
     model.fit(x_train, y_train, epochs=10, 
         batch_size=2000, 
         validation_split=0.2)
-
+    
     return model

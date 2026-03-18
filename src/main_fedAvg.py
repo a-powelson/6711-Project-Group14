@@ -15,7 +15,8 @@ if __name__ == '__main__':
     x_train, x_test, y_train, y_test = split_data(data)
     print(f"Training set: {x_train.shape}, Test set: {x_test.shape}")
 
-    model = make_mlp(x_train, y_train)
+    model = make_mlp()
+    model = train_model(model, x_train, y_train)
 
     results = model.evaluate(x_test, y_test, verbose=0)
     print('Test loss, Test accuracy:', results)
