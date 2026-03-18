@@ -13,11 +13,8 @@ Tuneable characteristics:
 - loss function
 - batch size
 """
-import tensorflow as tf
-import numpy as np
-import matplotlib.pyplot as plt
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Flatten, Dense
+from tensorflow.keras.layers import Dense
 
 def make_mlp():
     model = Sequential([
