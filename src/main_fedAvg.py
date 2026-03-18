@@ -10,9 +10,13 @@ from mlp_model import *
 
 if __name__ == '__main__':
     data = load_data('data/wsn-ds.csv')
-    data = balance_data(data)
 
     x_train, x_test, y_train, y_test = split_data(data)
+    x_train = normalize_data(x_train)
+    x_test = normalize_data(x_test)
+
+    x_train, y_train = balance_data(x_train, y_train)
+
     print(f"Training set: {x_train.shape}, Test set: {x_test.shape}")
 
     model = make_mlp()
