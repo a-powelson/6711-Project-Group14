@@ -6,12 +6,12 @@ March 16, 2026
 See README.md for references.
 
 Tuneable characteristics:
-- activation function
 - number of layers
 - size of layers
 - optimizer
 - loss function
 - batch size
+- epochs
 """
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
@@ -36,13 +36,8 @@ def make_mlp():
     return model
 
 def train_model(model, x_train, y_train):
-    """
-    In the GeeksForGeeks MLP tutorial they split the data, and then use only
-    20% of the training portion, I'm not sure why. Need to look into that 
-    more. - AP
-    """
     model.fit(x_train, y_train, epochs=10, 
-        batch_size=2000, 
+        batch_size=256, 
         validation_split=0.2)
     
     return model
