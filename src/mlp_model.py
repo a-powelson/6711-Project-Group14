@@ -20,14 +20,9 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Flatten, Dense
 
 def make_mlp():
-    """
-    I'm not sure I fully understand these parameters, it seems we'll likely
-    have to change them to suit our data -AP
-    """
     model = Sequential([
-        Flatten(), # reshape input into 1D
-        Dense(256, activation='sigmoid'),  
-        Dense(128, activation='sigmoid'), 
+        Dense(256, activation='relu'),  
+        Dense(128, activation='relu'), 
         Dense(5, activation='softmax'), # output layer
     ])
 
