@@ -24,7 +24,7 @@ if __name__ == '__main__':
     """
     Initialize global model
     """
-    model = make_mlp()
+    gbl_model = make_mlp()
 
     """
     Do FedAvg...
@@ -33,4 +33,8 @@ if __name__ == '__main__':
         2. For each client k:
                 set weights = global weights
 
+    """
+
+    """
+    Evaluate final global model
     """

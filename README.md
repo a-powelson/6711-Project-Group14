@@ -10,6 +10,9 @@
     - [TensorFlow](https://www.tensorflow.org/api_docs/python/tf/keras)
     - [AbuHamza773](https://github.com/AbuHamza773/Federated-Learning-with-LSTM-for-Intrusion-Detection-in-IoT/blob/main/preprocess_custom.py)
 
+    - main_fedAvg.py
+        - [educative.io](https://www.educative.io/answers/what-is-federated-averaging-fedavg)
+
     - mlp_model.py
         - [GeeksForGeeks: MLP Intro](https://www.geeksforgeeks.org/deep-learning/multi-layer-perceptron-learning-in-tensorflow/)
         - [GeeksForGeeks: Activation Functions](https://www.geeksforgeeks.org/machine-learning/activation-functions-neural-networks/)

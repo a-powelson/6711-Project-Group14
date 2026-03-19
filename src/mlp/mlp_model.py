@@ -18,7 +18,7 @@ from tensorflow.keras.layers import Dense
 
 def make_mlp():
     model = Sequential([
-        Dense(256, activation='relu'),  
+        Dense(256, activation='relu', input_shape=(18,)),  
         Dense(128, activation='relu'), 
         Dense(5, activation='softmax'), # output layer
     ])
