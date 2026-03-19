@@ -34,12 +34,12 @@ def load_data():
     df = df.drop_duplicates().reset_index(drop=True)
     df = df.dropna()
 
-    # Binary labels - "Normal" or "Attack"
-    df['binary_label'] = df['label'].apply(lambda x: 'Normal' if x == 'Normal' else 'Attack')
-    print(df['binary_label'].value_counts())
+    # Binary class labels - "Normal" or "Attack"
+    y_binary = df["label"].apply(lambda x: "Normal" if x == "Normal" else "Attack")
 
-    drop_cols = ['id', 'label', 'binary_label']
-    X = df.drop(columns=drop_cols)
-    y = df['binary_label']
+    # Multi class labels - all attacks
+    y_multi = df["label"]
+
+    X = df.drop(columns=['id', 'label'])
 
     return df, X, y
