@@ -42,4 +42,4 @@ def load_data():
 
     X = df.drop(columns=['id', 'label'])
 
-    return df, X, y
+    return df, X, y_binary, y_multi
