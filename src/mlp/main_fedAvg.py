@@ -27,14 +27,26 @@ if __name__ == '__main__':
     gbl_model = make_mlp()
 
     """
-    Do FedAvg...
-    0. For total rounds T:
-        1. Sample N clients to form C
-        2. For each client k:
-                set weights = global weights
-
+    Do FedAvg
     """
+    for i in range(0, 3):
+        # Select clients C
+        # Provide models for all clients k in C
+        # Train local clients
+        for i, k in C:
+            train_model(client_model, client_x, client_y)
+
+        # Aggregate client models
+        agg_model = make_mlp(...)
+        for k in C:
+            agg_model_weights += k_model_weights
+
+        # Update global model
+        gbl_model_weights = agg_model_weights / len(C)
 
     """
     Evaluate final global model
     """
+    res = gbl_model.evaluate(...)
+    print('Test loss, Test accuracy:', res)
+    
