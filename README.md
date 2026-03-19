@@ -2,6 +2,7 @@
 
 ## Notes
 - Evaluated sigmoid vs relu, relu was better
+- There are 100 nodes in the dataset, so the size of selected set of clients *C* should be <=100
 
 ## References
 

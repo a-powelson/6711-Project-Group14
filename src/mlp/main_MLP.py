@@ -3,6 +3,8 @@ Ava Powelson
 B00802243
 March 16, 2026
 
+Centrally trained MLP model.
+
 See README.md for references.
 """
 from preprocess import *
@@ -22,15 +24,9 @@ if __name__ == '__main__':
     print(f"Training set: {x_train.shape}, Test set: {x_test.shape}")
 
     """
-    Initialize global model
+    Initialize, Train, & Evaluate MLP model
     """
     model = make_mlp()
-
-    """
-    Do FedAvg...
-    0. For total rounds T:
-        1. Sample N clients to form C
-        2. For each client k:
-                set weights = global weights
-
-    """
+    model = train_model(model, x_train, y_train)
+    results = model.evaluate(x_test, y_test, verbose=0)
+    print('Test loss, Test accuracy:', results)

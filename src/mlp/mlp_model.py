@@ -24,10 +24,7 @@ def make_mlp():
     ])
 
     """
-    Adam: a popular optimizer that extends SGD
-    Loss: suitable for multi-class classification
-    Metrics: accuracy, plus we will likely add more. 
-        - I'm not sure if they get added here or later -AP
+    Metrics ToDo: find names that tf uses for other ones
     """
     model.compile(optimizer='adam',
                 loss='sparse_categorical_crossentropy',

@@ -55,14 +55,3 @@ def split_data(df, test_size=0.3, target_column="label"):
     y = df[target_column]
 
     return train_test_split(X, y, test_size=test_size)
-
-"""
-Handle Outliers
-- IQR 25-75 removes everything except TDMA and Normal, so we'll just keep everything
-"""
-# numerical_cols = df.select_dtypes(include=['float64', 'int64']).columns
-# q1 = df[numerical_cols].quantile(0.25)
-# q3 = df[numerical_cols].quantile(0.75)
-# iqr = q3 - q1
-# df_no_outliers = df[~((df[numerical_cols] < (q1 - 1.5*iqr)) | (df[numerical_cols] > (q3 + 1.5*iqr))).any(axis=1)]
-# print(f"Outliers Removed Rows: {df.shape[0]}")
