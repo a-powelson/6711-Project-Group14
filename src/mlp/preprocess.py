@@ -13,8 +13,7 @@ Tuneable parameters:
 import pandas as pd
 from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import train_test_split
-from sklearn import preprocessing
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, LabelEncoder
 
 """
 Load WSN-DS from csv
@@ -28,7 +27,7 @@ def load_data(file='../data/wsn-ds.csv'):
     # print(df.isnull().sum())
 
     # Convert labels to ints
-    le = preprocessing.LabelEncoder()
+    le = LabelEncoder()
     le.fit(df.label)
     df['label'] = le.transform(df.label)
 
