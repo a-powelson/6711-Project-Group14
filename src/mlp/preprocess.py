@@ -23,6 +23,15 @@ def load_data(file='../data/wsn-ds.csv'):
     print(f"Number of Rows x Columns: {df.shape[0]} x {df.shape[1]}\n")
     print(f"Class distribution:\n {df.iloc[:, -1].value_counts()}\n")
 
+    # cleanup column names
+    df.columns = (
+        df.columns
+        .str.strip()
+        .str.replace(" ", "_")
+        .str.replace("-", "_")
+        .str.replace("/", "_")
+    )
+
     # No null cells encountered
     # print(df.isnull().sum())
 
