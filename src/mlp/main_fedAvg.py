@@ -35,7 +35,8 @@ if __name__ == '__main__':
     """
     Do FedAvg
     """
-    for i in range(0, 1):
+    T = 1
+    for i in range(0, T):
         agg_weights = [np.zeros_like(w) for w in gbl_model.get_weights()]
         total_samples = 0
         for k in C:
