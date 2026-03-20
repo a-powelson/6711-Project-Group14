@@ -14,11 +14,12 @@ Tuneable characteristics:
 - epochs
 """
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Dense, Input
 
 def make_mlp():
     model = Sequential([
-        Dense(256, activation='relu', input_shape=(18,)),  
+        Input(shape=(18,)),
+        Dense(256, activation='relu'),  
         Dense(128, activation='relu'), 
         Dense(5, activation='softmax'), # output layer
     ])
