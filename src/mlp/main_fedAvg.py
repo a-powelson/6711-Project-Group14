@@ -25,6 +25,7 @@ if __name__ == '__main__':
     for i in range(0, 100):
         client_data.append(gbl_data[gbl_data['id'] % 100 == i])
         client_models.append(make_mlp())
+        client_models[i].set_weights(gbl_model.get_weights())
 
     """
     Select Clients (using all for now)
@@ -34,7 +35,7 @@ if __name__ == '__main__':
     """
     Do FedAvg
     """
-    for i in range(0, 3):
+    for i in range(0, 1):
         agg_weights = [np.zeros_like(w) for w in gbl_model.get_weights()]
         total_samples = 0
         for k in C:
