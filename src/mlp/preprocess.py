@@ -18,7 +18,7 @@ from sklearn.preprocessing import MinMaxScaler, LabelEncoder
 """
 Load WSN-DS from csv
 """
-def load_data(file='../data/wsn-ds.csv'):
+def load_data(file='../data/wsn-ds.csv', cls='mc'):
     df = pd.read_csv(file)
     print(f"Number of Rows x Columns: {df.shape[0]} x {df.shape[1]}\n")
     print(f"Class distribution:\n {df.iloc[:, -1].value_counts()}\n")
@@ -37,8 +37,21 @@ def load_data(file='../data/wsn-ds.csv'):
 
     # Convert labels to ints
     le = LabelEncoder()
-    le.fit(df.label)
-    df['label'] = le.transform(df.label)
+
+    # binary classification
+    if cls == 'b':
+        df["label"].apply(lambda x: "Normal" if x == "Normal" else "Attack")
+        le.fit(df.label)
+        df['label'] = le.transform(df.label)
+    
+    # multiclass classification
+    elif cls == 'mc':
+        le.fit(df.label)
+        df['label'] = le.transform(df.label)
+
+    else:
+        print("Unknown classification.")
+        return None
 
     return df
 

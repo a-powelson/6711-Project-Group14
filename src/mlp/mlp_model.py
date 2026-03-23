@@ -15,14 +15,27 @@ Tuneable characteristics:
 """
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Input
+from args import DEFAULT_E, DEFAULT_B
 
-def make_mlp():
-    model = Sequential([
-        Input(shape=(18,)),
-        Dense(256, activation='relu'),  
-        Dense(128, activation='relu'), 
-        Dense(5, activation='softmax'), # output layer
-    ])
+def make_mlp(cls='mc'):
+
+    # Multi class
+    if cls == 'mc':
+        model = Sequential([
+            Input(shape=(18,)),
+            Dense(256, activation='relu'),  
+            Dense(128, activation='relu'), 
+            Dense(5, activation='softmax'), # output layer
+        ])
+
+    # Binary classification
+    else:
+        model = Sequential([
+            Input(shape=(18,)),
+            Dense(256, activation='relu'),  
+            Dense(128, activation='relu'), 
+            Dense(2, activation='softmax'), # output layer
+        ])
 
     """
     Metrics ToDo: find names that tf uses for other ones
@@ -33,9 +46,9 @@ def make_mlp():
 
     return model
 
-def train_model(model, x_train, y_train):
-    model.fit(x_train, y_train, epochs=10, 
-        batch_size=256, 
+def train_model(model, x_train, y_train, E=DEFAULT_E, B=DEFAULT_B):
+    model.fit(x_train, y_train, epochs=E, 
+        batch_size=B, 
         validation_split=0.2)
     
     return model
