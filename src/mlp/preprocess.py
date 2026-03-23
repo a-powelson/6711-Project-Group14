@@ -40,7 +40,7 @@ def load_data(file='../data/wsn-ds.csv', cls='mc'):
 
     # binary classification
     if cls == 'b':
-        df["label"].apply(lambda x: "Normal" if x == "Normal" else "Attack")
+        df['label'] = df["label"].apply(lambda x: "Normal" if x == "Normal" else "Attack")
         le.fit(df.label)
         df['label'] = le.transform(df.label)
     

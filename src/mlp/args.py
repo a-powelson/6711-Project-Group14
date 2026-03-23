@@ -10,12 +10,12 @@ def args_parser():
 
     # federated arguments
     parser.add_argument('-T', type=int, default=DEFAULT_T, help="rounds of training T")
-    parser.add_argument('-C', type=float, default=DEFAULT_C, help="number of clients C")
+    parser.add_argument('-C', type=int, default=DEFAULT_C, help="number of clients C")
     parser.add_argument('-E', type=int, default=DEFAULT_E, help="the number of local epochs E")
     parser.add_argument('-B', type=int, default=DEFAULT_B, help="local batch size B")
 
     # other arguments
-    parser.add_argument('-cls', type=int, default='mc', help="binary (b) or multclass (mc) classification")
+    parser.add_argument('-cls', type=str, default='mc', help="binary (b) or multclass (mc) classification")
 
     args = parser.parse_args()
     return args

@@ -12,10 +12,12 @@ from mlp_model import *
 from args import *
 
 if __name__ == '__main__':
+    args = args_parser()
+
     """
     Load & prepare data
     """
-    data = load_data('data/wsn-ds.csv')
+    data = load_data('data/wsn-ds.csv', cls=args.cls)
 
     x_train, x_test, y_train, y_test = split_data(data)
     x_train = normalize_data(x_train)
@@ -27,7 +29,7 @@ if __name__ == '__main__':
     """
     Initialize, Train, & Evaluate MLP model
     """
-    model = make_mlp()
-    model = train_model(model, x_train, y_train)
+    model = make_mlp(cls=args.cls)
+    model = train_model(model, x_train, y_train, E=args.E, B=args.B)
     results = model.evaluate(x_test, y_test, verbose=0)
     print('Test loss, Test accuracy:', results)
