@@ -15,9 +15,9 @@ Tuneable characteristics:
 """
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Input
-from args import DEFAULT_E, DEFAULT_B
+from args import DEFAULT_E, DEFAULT_B, DEFAULT_CLS
 
-def make_mlp(cls='mc'):
+def make_mlp(cls=DEFAULT_CLS):
 
     # Multi class
     if cls == 'mc':

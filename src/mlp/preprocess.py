@@ -14,11 +14,12 @@ import pandas as pd
 from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, LabelEncoder
+from args import DEFAULT_CLS
 
 """
 Load WSN-DS from csv
 """
-def load_data(file='../data/wsn-ds.csv', cls='mc'):
+def load_data(file='../data/wsn-ds.csv', cls=DEFAULT_CLS):
     df = pd.read_csv(file)
     print(f"Number of Rows x Columns: {df.shape[0]} x {df.shape[1]}\n")
     print(f"Class distribution:\n {df.iloc[:, -1].value_counts()}\n")

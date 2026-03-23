@@ -4,6 +4,7 @@ DEFAULT_T = 3
 DEFAULT_C = 100 # all
 DEFAULT_E = 10
 DEFAULT_B = 256
+DEFAULT_CLS = 'mc'
 
 def args_parser():
     parser = argparse.ArgumentParser()

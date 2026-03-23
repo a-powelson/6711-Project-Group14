@@ -1,12 +1,9 @@
 # 6711-Project-Group14
 
-## Notes
-- Evaluated sigmoid vs relu, relu was better
-- There are 100 nodes in the dataset, so the size of selected set of clients *C* should be <=100
-
 ## References
 
 - src/mlp
+    - [shaoxiongji](https://github.com/shaoxiongji/federated-learning)
     - [TensorFlow](https://www.tensorflow.org/api_docs/python/tf/keras)
     - [AbuHamza773](https://github.com/AbuHamza773/Federated-Learning-with-LSTM-for-Intrusion-Detection-in-IoT/blob/main/preprocess_custom.py)
 
