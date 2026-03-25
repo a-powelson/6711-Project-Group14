@@ -7,6 +7,11 @@
     - [TensorFlow](https://www.tensorflow.org/api_docs/python/tf/keras)
     - [AbuHamza773](https://github.com/AbuHamza773/Federated-Learning-with-LSTM-for-Intrusion-Detection-in-IoT/blob/main/preprocess_custom.py)
 
+    - localization.py
+        - [ChatGPT prompt: how to convert inter-pair distances into 2D plot?](chatgpt.com)
+        - [Reddit](https://www.reddit.com/r/algorithms/comments/cx1lpl/creating_a_grid_of_nodes_using_only_the_distance/)
+        - [SciKit Learn: MDS](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.MDS.html)
+  
     - main_fedAvg.py
         - [educative.io](https://www.educative.io/answers/what-is-federated-averaging-fedavg)
 
