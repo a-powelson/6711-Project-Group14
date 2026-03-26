@@ -33,9 +33,11 @@ def get_coords(gbl_data, N=100):
             pairs.append([i, j, 0])
             matches = row_keys[row_keys == tuple_ij]
             # print(matches)
-            pairs[-1][-1] = (distances.loc[matches.index]['Dist_To_CH'].mean())
-
-    pairs = [(i, j, d) for i, j, d in pairs if not np.isnan(d)]
+            d = distances.loc[matches.index]['Dist_To_CH'].mean()
+            if not np.isnan(d):
+                pairs[-1][-1] = d
+            else:
+                pairs[-1][-1] = 0
 
     """
     Construct a layout on a 100x00 grid that maintains (best effort) 
@@ -47,6 +49,7 @@ def get_coords(gbl_data, N=100):
         D[n1, n2] = d
         D[n2, n1] = d
 
+    # Get rid of (non-diagonal) 0s
     for i in range(N):
         for j in range(N):
             if i != j and D[i, j] == 0:
