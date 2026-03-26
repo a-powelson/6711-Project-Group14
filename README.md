@@ -1,6 +1,9 @@
 # 6711-Project-Group14
 
 ## References
+- src/multitask_mlp
+    - [giokezo](https://github.com/giokezo/Multi-Task-Learning-with-a-Two-Headed-MLP)
+    - [TensorFlow](https://www.tensorflow.org/api_docs/python/tf/keras/Model)
 
 - src/mlp
     - [shaoxiongji](https://github.com/shaoxiongji/federated-learning)

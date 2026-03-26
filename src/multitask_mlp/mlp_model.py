@@ -1,54 +1,55 @@
 """
 Ava Powelson
 B00802243
-March 16, 2026
+March 26, 2026
 
 See README.md for references.
-
-Tuneable characteristics:
-- number of layers
-- size of layers
-- optimizer
-- loss function
-- batch size
-- epochs
 """
-from tensorflow.keras.models import Sequential
+from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dense, Input
 from args import DEFAULT_E, DEFAULT_B, DEFAULT_CLS
 
+"""
+Make a multi-task MLP with two heads to simultaneously
+perform classification and localization tasks.
+Cannot use Sequential anymore as it is more suited for 
+Single-Input/Single-Output, so switching to Keras's
+Functional API.
+"""
 def make_mlp(cls=DEFAULT_CLS):
+    # Shared layers
+    inputs = Input(shape=(18,))
+    l1 = Dense(256, activation='relu')(inputs)
+    l2 = Dense(128, activation='relu')(l1)
+    l3 = Dense(64, activation='relu')(l2)
 
-    # Multi class
-    if cls == 'mc':
-        model = Sequential([
-            Input(shape=(18,)),
-            Dense(256, activation='relu'),  
-            Dense(128, activation='relu'), 
-            Dense(5, activation='softmax'), # output layer
-        ])
+    # Head 1: Location
+    loc_head = Dense(64, activation='relu')(l3)
+    loc_output = Dense(2, activation='linear', name='loc_output')(loc_head)
 
-    # Binary classification
-    else:
-        model = Sequential([
-            Input(shape=(18,)),
-            Dense(256, activation='relu'),  
-            Dense(128, activation='relu'), 
-            Dense(2, activation='softmax'), # output layer
-        ])
+    # Head 2: Classification
+    class_head = Dense(64, activation='relu')(l3)
+    if cls == 'mc':  # multi-class
+        class_output = Dense(5, activation='softmax', name='class_output')(class_head)
+    else:  # binary
+        class_output = Dense(1, activation='sigmoid', name='class_output')(class_head)
 
-    """
-    Metrics ToDo: find names that tf uses for other ones
-    """
-    model.compile(optimizer='adam',
-                loss='sparse_categorical_crossentropy',
-                metrics=['accuracy'])
+    # Model
+    model = Model(inputs=inputs, outputs=[loc_output, class_output])
+    model.compile(optimizer='adam', 
+        loss={'loc_output': 'mse', 'class_output':
+                'sparse_categorical_crossentropy' },
+        metrics={ 'loc_output': ['mse'],
+                'class_output': ['accuracy'] }
+    )
 
     return model
 
-def train_model(model, x_train, y_train, E=DEFAULT_E, B=DEFAULT_B):
-    model.fit(x_train, y_train, epochs=E, 
-        batch_size=B, 
-        validation_split=0.2)
+def train_model(model, x_train, y_train_loc, y_train_class, E=DEFAULT_E, B=DEFAULT_B):
+    model.fit(x_train, { 'loc_output': y_train_loc,
+                         'class_output': y_train_class
+                       }, epochs=E, 
+                        batch_size=B, 
+                        validation_split=0.2)
     
     return model

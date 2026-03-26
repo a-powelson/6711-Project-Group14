@@ -60,11 +60,11 @@ if __name__ == '__main__':
         agg_weights = [np.zeros_like(w) for w in gbl_model.get_weights()]
         total_samples = 0
         for k in range(0, C):
-            x_train, x_test, y_train, y_test = split_data(client_data[k])
+            x_train, x_test, y_train_class, y_test_class, y_train_loc, y_test_loc = split_data_loc(client_data[k])
             x_train = normalize_data(x_train)
             x_test = normalize_data(x_test)
 
-            train_model(client_models[k], x_train, y_train, E=E, B=B)
+            train_model(client_models[k], x_train, y_train_loc, y_train_class, E=E, B=B)
 
             wk = client_models[k].get_weights()
             sample_size_k = len(x_train)
@@ -86,7 +86,11 @@ if __name__ == '__main__':
     """
     Evaluate final global model
     """
-    x_train, x_test, y_train, y_test = split_data(gbl_data)
+    x_train, x_test, y_train_class, y_test_class, y_train_loc, y_test_loc = split_data_loc(gbl_data)
     x_test = normalize_data(x_test)
-    res = gbl_model.evaluate(x_test, y_test)
-    print('Test loss, Test accuracy:', res)
+    res = gbl_model.evaluate(x_test, {
+        'loc_output': y_test_loc,
+        'class_output': y_test_class
+    })
+    
+    print(res, gbl_model.metrics_names)
