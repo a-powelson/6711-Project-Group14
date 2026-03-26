@@ -39,7 +39,7 @@ def make_mlp(cls=DEFAULT_CLS):
     model.compile(optimizer='adam', 
         loss={'loc_output': 'mse', 'class_output':
                 'sparse_categorical_crossentropy' },
-        metrics={ 'loc_output': ['mse'],
+        metrics={ 'loc_output': ['mae'],
                 'class_output': ['accuracy'] }
     )
 
