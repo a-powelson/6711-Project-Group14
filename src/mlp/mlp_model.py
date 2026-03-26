@@ -34,7 +34,7 @@ def make_mlp(cls=DEFAULT_CLS):
             Input(shape=(18,)),
             Dense(256, activation='relu'),  
             Dense(128, activation='relu'), 
-            Dense(2, activation='softmax'), # output layer
+            Dense(1, activation='softmax'), # output layer
         ])
 
     """
