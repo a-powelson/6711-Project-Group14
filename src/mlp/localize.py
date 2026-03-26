@@ -8,10 +8,10 @@ See README for references.
 import numpy as np
 from sklearn.manifold import MDS
 
-def get_coords(gbl_data):
+def get_coords(gbl_data, N=100):
     distances = gbl_data[['id', 'who_CH', 'Dist_To_CH']]
-    distances['id'] = distances['id'] % 100
-    distances['who_CH'] = distances['who_CH'] % 100
+    distances['id'] = distances['id'] % N
+    distances['who_CH'] = distances['who_CH'] % N
     distances = distances.drop_duplicates()
     distances = distances.drop(distances[distances.Dist_To_CH == 0].index)
 
@@ -26,10 +26,9 @@ def get_coords(gbl_data):
     Find average distance between every node pair.
     """
     row_keys = distances[["id", "who_CH"]].apply(sorted, axis=1).apply(tuple)
-    max_ds = [-1, (0, 0)]
     pairs = []
-    for i in range(0, 100):
-        for j in range(i+1, 100):
+    for i in range(N):
+        for j in range(i+1, N):
             tuple_ij = (i, j)
             pairs.append([i, j, 0])
             matches = row_keys[row_keys == tuple_ij]
@@ -42,16 +41,14 @@ def get_coords(gbl_data):
     Construct a layout on a 100x00 grid that maintains (best effort) 
     inter-node distances using Multi-Dimensional Scaling (MDS).
     """
-    NUM_NODES = 100
-
     # make grid w/ distances
-    D = np.zeros((NUM_NODES, NUM_NODES))
+    D = np.zeros((N, N))
     for n1, n2, d in pairs:
         D[n1, n2] = d
         D[n2, n1] = d
 
-    for i in range(NUM_NODES):
-        for j in range(NUM_NODES):
+    for i in range(N):
+        for j in range(N):
             if i != j and D[i, j] == 0:
                 D[i, j] = D.max()
 
@@ -73,13 +70,19 @@ def get_coords(gbl_data):
 
     return x, y
 
-    # import matplotlib.pyplot as plt
-    # plot nodes
-    # plt.figure(figsize=(6, 6))
-    # plt.scatter(x, y)
+# Test
+if __name__ == '__main__':
+    import matplotlib.pyplot as plt
+    from preprocess import load_data
 
-    # for i in range(NUM_NODES):
-    #     plt.text(x[i], y[i], i)
+    gbl_data = load_data('data/wsn-ds.csv')
+    x, y = get_coords(gbl_data)
+    
+    plt.figure(figsize=(6, 6))
+    plt.scatter(x, y)
 
-    # plt.grid(True)
-    # plt.show()
+    for i in range(100):
+        plt.text(x[i], y[i], i)
+
+    plt.grid(True)
+    plt.show()
