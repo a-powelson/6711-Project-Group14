@@ -12,12 +12,6 @@ from args import *
 import numpy as np
 import random
 
-"""
-Remove log warnings
-"""
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
-
 if __name__ == '__main__':
     """
     Load args

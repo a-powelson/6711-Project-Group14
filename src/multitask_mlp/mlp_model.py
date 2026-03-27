@@ -21,19 +21,16 @@ def make_mlp(cls=DEFAULT_CLS):
     inputs = Input(shape=(18,))
     l1 = Dense(256, activation='relu')(inputs)
     l2 = Dense(128, activation='relu')(l1)
-    l3 = Dense(64, activation='relu')(l2)
 
     # Head 1: Location
-    loc_head = Dense(64, activation='relu')(l3)
-    loc_output = Dense(2, activation='linear', name='loc_output')(loc_head)
+    loc_output = Dense(2, activation='linear', name='loc_output')(l2)
 
     # Head 2: Classification
-    class_head = Dense(64, activation='relu')(l3)
-    if cls == 'mc':  # multi-class
-        class_output = Dense(5, activation='softmax', name='class_output')(class_head)
+    if cls == 'mc':
+        class_output = Dense(5, activation='softmax', name='class_output')(l2)
         loss = 'sparse_categorical_crossentropy'
-    else:  # binary
-        class_output = Dense(1, activation='sigmoid', name='class_output')(class_head)
+    else:
+        class_output = Dense(1, activation='sigmoid', name='class_output')(l2)
         loss = 'binary_crossentropy'
 
     # Model
