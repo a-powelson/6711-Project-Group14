@@ -56,8 +56,8 @@ if __name__ == '__main__':
             wk = client_models[k].get_weights()
             sample_size_k = len(x_train)
 
-            for i in range(len(agg_weights)):
-                agg_weights[i] += wk[i] * sample_size_k
+            for j in range(len(agg_weights)):
+                agg_weights[j] += wk[j] * sample_size_k
             total_samples += sample_size_k
 
         # Average weights
