@@ -10,7 +10,7 @@ from tensorflow.keras.layers import Dense, Input
 from args import DEFAULT_E, DEFAULT_B, DEFAULT_CLS
 
 """
-Make a multi-task MLP with two heads to simultaneously
+Multi-task MLP with two heads to simultaneously
 perform classification and localization tasks.
 Cannot use Sequential anymore as it is more suited for 
 Single-Input/Single-Output, so switching to Keras's
@@ -31,16 +31,17 @@ def make_mlp(cls=DEFAULT_CLS):
     class_head = Dense(64, activation='relu')(l3)
     if cls == 'mc':  # multi-class
         class_output = Dense(5, activation='softmax', name='class_output')(class_head)
+        loss = 'sparse_categorical_crossentropy'
     else:  # binary
         class_output = Dense(1, activation='sigmoid', name='class_output')(class_head)
+        loss = 'binary_crossentropy'
 
     # Model
     model = Model(inputs=inputs, outputs=[loc_output, class_output])
-    model.compile(optimizer='adam', 
-        loss={'loc_output': 'mse', 'class_output':
-                'sparse_categorical_crossentropy' },
-        metrics={ 'loc_output': ['mae'],
-                'class_output': ['accuracy'] }
+    model.compile(optimizer='adam',
+        loss={'loc_output': 'mse', 'class_output': loss},
+        loss_weights={'loc_output': 0.3, 'class_output': 0.7},
+        metrics={ 'loc_output': ['mae'], 'class_output': ['accuracy'] }
     )
 
     return model
@@ -50,6 +51,7 @@ def train_model(model, x_train, y_train_loc, y_train_class, E=DEFAULT_E, B=DEFAU
                          'class_output': y_train_class
                        }, epochs=E, 
                         batch_size=B, 
-                        validation_split=0.2)
+                        validation_split=0.2,
+                        verbose=2)
     
     return model

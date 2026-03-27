@@ -77,7 +77,7 @@ def split_data(df, test_size=0.3, target_column="label"):
     X = df.drop(columns=[target_column])
     y = df[target_column]
 
-    return train_test_split(X, y, test_size=test_size)
+    return train_test_split(X, y, test_size=test_size, random_state=42)
 
 """
 Split into train and test groups w/ localization

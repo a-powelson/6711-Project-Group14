@@ -12,6 +12,12 @@ from args import *
 import numpy as np
 import random
 
+"""
+Remove log warnings
+"""
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+
 if __name__ == '__main__':
     """
     Load args
@@ -69,8 +75,8 @@ if __name__ == '__main__':
             wk = client_models[k].get_weights()
             sample_size_k = len(x_train)
 
-            for i in range(len(agg_weights)):
-                agg_weights[i] += wk[i] * sample_size_k
+            for j in range(len(agg_weights)):
+                agg_weights[j] += wk[j] * sample_size_k
             total_samples += sample_size_k
 
         # Average weights
@@ -88,9 +94,8 @@ if __name__ == '__main__':
     """
     x_train, x_test, y_train_class, y_test_class, y_train_loc, y_test_loc = split_data_loc(gbl_data)
     x_test = normalize_data(x_test)
-    res = gbl_model.evaluate(x_test, {
-        'loc_output': y_test_loc,
-        'class_output': y_test_class
-    })
+    res = gbl_model.evaluate(x_test, {'loc_output': y_test_loc, 
+                                      'class_output': y_test_class}, 
+                             return_dict=True, verbose=2)
     
-    print(res, gbl_model.metrics_names)
+    print(res)
