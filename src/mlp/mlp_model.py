@@ -15,7 +15,7 @@ Tuneable characteristics:
 """
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Input
-from args import DEFAULT_E, DEFAULT_B, DEFAULT_CLS
+from src.preprocessing.args import DEFAULT_E, DEFAULT_B, DEFAULT_CLS
 
 def make_mlp(cls=DEFAULT_CLS):
 
@@ -47,8 +47,8 @@ def make_mlp(cls=DEFAULT_CLS):
     return model
 
 def train_model(model, x_train, y_train, E=DEFAULT_E, B=DEFAULT_B):
-    model.fit(x_train, y_train, epochs=E, 
+    history = model.fit(x_train, y_train, epochs=E, 
         batch_size=B, 
         validation_split=0.2)
     
-    return model
+    return history

@@ -1,72 +1,62 @@
 """
-Amina Fatma Khan
+AMINA FATMA KHAN
 B00868087
-March 18, 2026
+March 27, 2026
 
-Sources: https://www.geeksforgeeks.org/machine-learning/random-forest-algorithm-in-machine-learning/
+- Train the Random Forest model
+
+Usage:
+    python3 rf_model.py -cls mc
+    python3 rf_model.py -cls b
 """
 
-from preprocessing import load_data
-from sklearn.model_selection import train_test_split
+from src.preprocessing.preprocess import *
+from src.preprocessing.args import *
+
+import os
+import json
+import time
+import joblib
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report, confusion_matrix
-import matplotlib.pyplot as plt
-# from sklearn.preprocessing import LabelEncoder
 
-# Data
-df, X, y = load_data()
-X_train, X_test, yb_train, yb_test, ym_train, ym_test = train_test_split(
-    X, y_binary, y_multi,
-    test_size=0.2,
-    random_state=42,
-    stratify=y_binary
-)
+os.makedirs('saved_models', exist_ok=True)
 
-x_feature = "Dist_To_CH"
-y_feature = "Consumed_Energy"
+if __name__ == '__main__':
+    args   = args_parser()
+    cls    = args.cls
+    suffix = 'multiclass' if cls == 'mc' else 'binary'
+    print(f'\nTraining RF - {suffix.capitalize()}')
 
-# Binary Classification
-rf_binary = RandomForestClassifier(
-    n_estimators=100,
-    random_state=42,
-    class_weight="balanced"
-)
+    """
+    Data
+    """
+    data = load_data('data/wsn-ds.csv', cls=cls)
+    X_train, X_test, y_train, y_test = split_data(data, test_size=0.3)
+    X_train = normalize_data(X_train)
+    X_train, y_train = balance_data(X_train, y_train)
+    print(f"Training set: {X_train.shape} | Test set: {X_test.shape}")
 
-rf_binary.fit(X_train, yb_train)
-yb_pred = rf_binary.predict(X_test)
+    """
+    Train
+    """
+    model = RandomForestClassifier(n_estimators=100, random_state=42,
+                                   class_weight='balanced', n_jobs=-1)
+    start = time.time()
+    model.fit(X_train, y_train)
+    training_time = round(time.time() - start, 2)
+    print(f"Training time: {training_time}s")
 
-print("Binary")
-print("Accuracy:", accuracy_score(yb_test, yb_pred))
-print("Precision:", precision_score(yb_test, yb_pred, pos_label="Attack"))
-print("Recall:", recall_score(yb_test, yb_pred, pos_label="Attack"))
-print("F1-score:", f1_score(yb_test, yb_pred, pos_label="Attack"))
-print("\nClassification Report:\n")
-print(classification_report(yb_test, yb_pred))
+    """
+    Save model
+    """
+    joblib.dump(model, f'saved_models/rf_{suffix}_model.pkl')
+    print(f"Model saved to saved_models/rf_{suffix}_model.pkl")
 
-cm = confusion_matrix(yb_test, yb_pred, labels=["Attack", "Normal"])
-print("Confusion Matrix:\n", cm)
+    """
+    Save history
+    """
+    with open(f'saved_models/rf_{suffix}_history.json', 'w') as f:
+        json.dump({'training_time': training_time}, f, indent=4)
+    print(f"History saved to saved_models/rf_{suffix}_history.json")
 
-# tp = cm[0, 0]
-# fn = cm[0, 1]
-# fp = cm[1, 0]
-# tn = cm[1, 1]
-# fpr = fp / (fp + tn)
-# print("False Positive Rate:", fpr)
-
-# Binary plot - to do
-
-# Multi Class Classification
-rf_multi = RandomForestClassifier(
-    n_estimators=100,
-    random_state=42
-)
-
-rf_multi.fit(X_train, ym_train)
-ym_pred = rf_multi.predict(X_test)
-
-print("\nMulti-class")
-print("Accuracy:", accuracy_score(ym_test, ym_pred))
-print("\nClassification Report:\n")
-print(classification_report(ym_test, ym_pred))
-
-# Multi class plot - to do
+    print('\nDone!')

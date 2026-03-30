@@ -9,6 +9,7 @@
     - [shaoxiongji](https://github.com/shaoxiongji/federated-learning)
     - [TensorFlow](https://www.tensorflow.org/api_docs/python/tf/keras)
     - [AbuHamza773](https://github.com/AbuHamza773/Federated-Learning-with-LSTM-for-Intrusion-Detection-in-IoT/blob/main/preprocess_custom.py)
+    -[Keras - save/load models](https://keras.io/guides/serialization_and_saving/)
 
     - localize.py
         - [ChatGPT prompt: how to convert inter-pair distances into 2D plot?](chatgpt.com)
@@ -28,3 +29,7 @@
     - preprocess.py
         - [WSN-Project](https://github.com/m-zeeshan555/WSN-DS/blob/main/Wireless%20Sensor%20Network%20Project%20Notebook.pdf)
         - [SciKit Learn](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
+
+- src/rf
+    - [scikit-learn]( https://scikit-learn.org/stable/model_persistence.html)
+    - 
