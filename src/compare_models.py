@@ -77,7 +77,7 @@ if __name__ == '__main__':
     2. Confusion matrices (from saved PNGs)
     """
     rf_cm_path  = f'charts/rf/rf_{suffix}_confusion_matrix.png'
-    fed_cm_path = 'charts/fedAvg/fedavg_{suffix}_confusion_matrix.png'
+    fed_cm_path = f'charts/fedAvg/fedavg_{suffix}_confusion_matrix.png'
 
     if os.path.exists(rf_cm_path) and os.path.exists(fed_cm_path):
         fig, axes = plt.subplots(1, 2, figsize=(14, 5))
