@@ -1,0 +1,2 @@
+model,cls,accuracy,macro_precision,macro_recall,macro_f1,macro_fpr,macro_fnr,training_time,auc,f1_Normal,fpr_Normal,fnr_Normal,f1_Attack,fpr_Attack,fnr_Attack
+Centralized MLP,b,0.996,0.986,0.9903,0.9881,0.0097,0.0097,13.45,0.9972,0.9785,0.0027,0.0167,0.9978,0.0167,0.0027

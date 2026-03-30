@@ -40,8 +40,8 @@ if __name__ == '__main__':
     rf  = pd.read_csv(rf_csv).iloc[0]
     fed = pd.read_csv(fed_csv).iloc[0]
 
-    print(f'Random Forest → Accuracy: {rf["accuracy"]:.4f}  Macro-F1: {rf["macro_f1"]:.4f}')
-    print(f'FedAvg MLP    → Accuracy: {fed["accuracy"]:.4f}  Macro-F1: {fed["macro_f1"]:.4f}')
+    print(f'Random Forest - Accuracy: {rf["accuracy"]:.4f}  Macro-F1: {rf["macro_f1"]:.4f}')
+    print(f'FedAvg MLP    - Accuracy: {fed["accuracy"]:.4f}  Macro-F1: {fed["macro_f1"]:.4f}')
 
     """
     1. Overall metrics comparison from csv (accuracy, precision, recall, F1, FPR, FNR, AUC if binary)
@@ -70,7 +70,7 @@ if __name__ == '__main__':
     plt.title(f'Random Forest vs FedAvg ({suffix.capitalize()})- Overall Metrics')
     plt.legend()
     plt.tight_layout()
-    plt.savefig('charts/compare_models/comparison_{suffix}_rf_vs_fedavg_overall.png')
+    plt.savefig(f'charts/compare_models/comparison_{suffix}_rf_vs_fedavg_overall.png')
     plt.show()
 
     """
@@ -89,7 +89,7 @@ if __name__ == '__main__':
         axes[1].set_title('FedAvg MLP')
         fig.suptitle(f'Confusion Matrix Comparison ({suffix.capitalize()})- RF vs FedAvg')
         plt.tight_layout()
-        plt.savefig('charts/compare_models/comparison_{suffix}_rf_vs_fedavg_confusion.png')
+        plt.savefig(f'charts/compare_models/comparison_{suffix}_rf_vs_fedavg_confusion.png')
         plt.show()
     else:
         print('Confusion matrix PNGs not found — skipping that chart.')
@@ -112,15 +112,15 @@ if __name__ == '__main__':
         plt.title(f'Random Forest vs FedAvg ({suffix.capitalize()})- Per-Class F1')
         plt.legend()
         plt.tight_layout()
-        plt.savefig('charts/compare_models/comparison_{suffix}_rf_vs_fedavg_per_class_f1.png')
+        plt.savefig(f'charts/compare_models/comparison_{suffix}_rf_vs_fedavg_per_class_f1.png')
         plt.show()
 
     """
     4. ROC curves (binary only)
     """
     if cls == 'b':
-        rf_roc_path  = 'charts/rf/rf_binary_roc_curve.png'
-        fed_roc_path = 'charts/fedAvg/fedavg_{suffix}_roc_curve.png'
+        rf_roc_path  = f'charts/rf/rf_{suffix}_roc_curve.png'
+        fed_roc_path = f'charts/fedAvg/fedavg_{suffix}_roc_curve.png'
 
         if os.path.exists(rf_roc_path) and os.path.exists(fed_roc_path):
             fig, axes = plt.subplots(1, 2, figsize=(12, 5))
@@ -132,7 +132,7 @@ if __name__ == '__main__':
             axes[1].set_title('FedAvg MLP')
             fig.suptitle(f'ROC Curve Comparison ({suffix.capitalize()})- RF vs FedAvg')
             plt.tight_layout()
-            plt.savefig('charts/compare_models/comparison_{suffix}_rf_vs_fedavg_roc.png')
+            plt.savefig(f'charts/compare_models/comparison_{suffix}_rf_vs_fedavg_roc.png')
             plt.show()
         else:
             print('ROC curve PNGs not found — skipping that chart.')

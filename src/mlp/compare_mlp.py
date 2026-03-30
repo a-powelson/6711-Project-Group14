@@ -109,7 +109,7 @@ if __name__ == '__main__':
 
     fig.suptitle(f'Centralized MLP vs FedAvg ({suffix.capitalize()}- Training Curves & Time', fontsize=13, fontweight='bold')
     plt.tight_layout()
-    plt.savefig(f'charts/compare/comparison_mlp_vs_fedavg_{suffix}_training_curves_and_time.png')
+    plt.savefig(f'charts/compare_mlp/comparison_mlp_vs_fedavg_{suffix}_training_curves_and_time.png')
     plt.show()
 
     """
@@ -139,7 +139,7 @@ if __name__ == '__main__':
     plt.title(f'Centralized MLP vs FedAvg ({suffix.capitalize()})- Overall Metrics')
     plt.legend()
     plt.tight_layout()
-    plt.savefig(f'charts/compare/comparison_mlp_vs_fedavg_{suffix}_overall.png')
+    plt.savefig(f'charts/compare_mlp/comparison_mlp_vs_fedavg_{suffix}_overall.png')
     plt.show()
 
     """
@@ -158,7 +158,7 @@ if __name__ == '__main__':
         axes[1].set_title('FedAvg MLP')
         fig.suptitle(f'Centralized MLP vs FedAvg ({suffix.capitalize()})- Confusion Matrices')
         plt.tight_layout()
-        plt.savefig(f'charts/compare/comparison_mlp_vs_fedavg_{suffix}_confusion.png')
+        plt.savefig(f'charts/compare_mlp/comparison_mlp_vs_fedavg_{suffix}_confusion.png')
         plt.show()
     else:
         print('Confusion matrix PNGs not found — skipping.')
@@ -181,7 +181,7 @@ if __name__ == '__main__':
         plt.title(f'Centralized MLP vs FedAvg ({suffix.capitalize()})- Per-Class F1')
         plt.legend()
         plt.tight_layout()
-        plt.savefig(f'charts/compare/comparison_mlp_vs_fedavg_{suffix}_per_class_f1.png')
+        plt.savefig(f'charts/compare_mlp/comparison_mlp_vs_fedavg_{suffix}_per_class_f1.png')
         plt.show()
 
     """
@@ -201,7 +201,7 @@ if __name__ == '__main__':
             axes[1].set_title('FedAvg MLP')
             fig.suptitle(f'ROC Curve Comparison ({suffix.capitalize()})- MLP vs FedAvg')
             plt.tight_layout()
-            plt.savefig(f'charts/compare/comparison_mlp_vs_fedavg_{suffix}_roc.png')
+            plt.savefig(f'charts/compare_mlp/comparison_mlp_vs_fedavg_{suffix}_roc.png')
             plt.show()
         else:
             print('ROC curve PNGs not found — skipping.')

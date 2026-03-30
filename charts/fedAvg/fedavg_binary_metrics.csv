@@ -1,0 +1,2 @@
+model,cls,accuracy,macro_precision,macro_recall,macro_f1,macro_fpr,macro_fnr,training_time,auc,f1_Normal,fpr_Normal,fnr_Normal,f1_Attack,fpr_Attack,fnr_Attack
+FedAvg MLP,b,0.9735,0.9633,0.8736,0.9125,0.1264,0.1264,156.51,0.9918,0.8394,0.0039,0.2489,0.9855,0.2489,0.0039

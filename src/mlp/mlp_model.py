@@ -34,7 +34,7 @@ def make_mlp(cls=DEFAULT_CLS):
             Input(shape=(18,)),
             Dense(256, activation='relu'),  
             Dense(128, activation='relu'), 
-            Dense(1, activation='softmax'), # output layer
+            Dense(2, activation='softmax'), # output layer
         ])
 
     """
@@ -47,8 +47,12 @@ def make_mlp(cls=DEFAULT_CLS):
     return model
 
 def train_model(model, x_train, y_train, E=DEFAULT_E, B=DEFAULT_B):
-    history = model.fit(x_train, y_train, epochs=E, 
-        batch_size=B, 
-        validation_split=0.2)
+    history = model.fit(x_train, 
+                        y_train, 
+                        epochs=E, 
+                        batch_size=B, 
+                        validation_split=0.2, 
+                        verbose=1
+                        )
     
     return history

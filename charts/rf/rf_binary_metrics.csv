@@ -1,0 +1,2 @@
+model,cls,accuracy,macro_precision,macro_recall,macro_f1,macro_fpr,macro_fnr,training_time,auc,f1_Attack,fpr_Attack,fnr_Attack,f1_Normal,fpr_Normal,fnr_Normal
+Random Forest,b,0.9989,0.9965,0.9971,0.9968,0.0029,0.0029,8.26,0.9992,0.9942,0.0007,0.0051,0.9994,0.0051,0.0007

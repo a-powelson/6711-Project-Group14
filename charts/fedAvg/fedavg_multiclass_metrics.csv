@@ -1,2 +1,2 @@
 model,cls,accuracy,macro_precision,macro_recall,macro_f1,macro_fpr,macro_fnr,training_time,f1_Blackhole,fpr_Blackhole,fnr_Blackhole,f1_Flooding,fpr_Flooding,fnr_Flooding,f1_Grayhole,fpr_Grayhole,fnr_Grayhole,f1_Normal,fpr_Normal,fnr_Normal,f1_Scheduling,fpr_Scheduling,fnr_Scheduling
-FedAvg MLP,mc,0.947,0.7874,0.5587,0.5327,0.0575,0.4413,152.64,0.7172,0.0063,0.3156,0.0059,0.0,0.997,0.3705,0.003,0.7558,0.9851,0.2583,0.0035,0.5847,0.0201,0.1345
+FedAvg MLP,mc,0.9514,0.7847,0.586,0.553,0.055,0.414,151.81,0.7233,0.0119,0.1827,0.0142,0.0,0.9928,0.3412,0.0035,0.7764,0.986,0.2482,0.0036,0.7002,0.0113,0.1144
