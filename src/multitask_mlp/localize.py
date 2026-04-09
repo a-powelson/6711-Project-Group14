@@ -82,10 +82,15 @@ if __name__ == '__main__':
     x, y = get_coords(gbl_data)
     
     plt.figure(figsize=(6, 6))
-    plt.scatter(x, y)
+    plt.scatter(x, y, s=300, alpha=0.2, edgecolors='black')
 
     for i in range(100):
-        plt.text(x[i], y[i], i)
+        plt.text(x[i], y[i], i, size=12, ha='center', va='center')
 
     plt.grid(True)
-    plt.show()
+    # plt.title("MDS Locations of Nodes in WSN-DS")
+    plt.xticks([0, 25, 50, 75, 100], fontsize=18)
+    plt.yticks([0, 25, 50, 75, 100], fontsize=18)
+    plt.grid(False)
+    plt.savefig('./charts/dataset/MDS_grid.png', dpi=600)
+    # plt.show()
