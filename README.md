@@ -17,6 +17,8 @@ The project is divided into the following directories:
 ## Usage
 Scripts should be run from the main project directory, e.g. python src/multitask_mlp/main_fedAvg.py.
 
+All arguments are optional.
+
 ```
 usage: main_<MLP|fedAvg>.py [-h] [-T T] [-C C] [-E E] [-B B] [-cls CLS]
 
