@@ -1,5 +1,5 @@
 # 6711-Project-Group14
-Porblem Statement: while previous works have focused on classifying jamming attacks using ML and some focus on physically locating jammers, there is no unified framework to perform both tasks simultaneously. Furthermore, previous approaches have relied on centralized data processing, creating privacy risks for client devices and communications. We introduce a solution using federated learning to preserve client privacy while performing jamming classification and localization with a multi-task Multi-Layer Perceptron.
+**Problem Statement**: while previous works have focused on classifying jamming attacks using ML and some focus on physically locating jammers, there is no unified framework to perform both tasks simultaneously. Furthermore, previous approaches have relied on centralized data processing, creating privacy risks for client devices and communications. We introduce a solution using federated learning to preserve client privacy while performing jamming classification and localization with a multi-task Multi-Layer Perceptron.
 
 ## Contents
 
