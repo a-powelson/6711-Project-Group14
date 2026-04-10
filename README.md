@@ -1,4 +1,33 @@
 # 6711-Project-Group14
+Porblem Statement: while previous works have focused on classifying jamming attacks using ML and some focus on physically locating jammers, there is no unified framework to perform both tasks simultaneously. Furthermore, previous approaches have relied on centralized data processing, creating privacy risks for client devices and communications. We introduce a solution using federated learning to preserve client privacy while performing jamming classification and localization with a multi-task Multi-Layer Perceptron.
+
+## Contents
+
+The project is divided into the following directories:
+- **charts**: contains figures of various evaluation results
+- **data**: contains the WSN-DS dataset in a csv
+- **src**: contains all implementation code.
+    - **mlp/**: contains a single-task (classification) MLP model with centralized (main_MLP.py) and federated (main_fedAvg.py) training, and evaluation scripts.
+    - **multitask_mlp/**: contains a multitask MLP with federated training (main_FedAvg.py) and a node localization script (localize.py).
+    - **preprocessing/**: contains data preprocessing and dataset analysis scripts.
+    - **rf/**: contains the Random Forest implementation and evaluation scripts.
+    - compare_models.py: overall comparison script to compare RF and MLP w/ FedAvg models.
+    - requirements.txt: list of required Python packages, can be installed with ```pip3 install -r requirements.txt```
+
+## Usage
+Scripts should be run from the main project directory, e.g. python src/multitask_mlp/main_fedAvg.py.
+
+```
+usage: main_<MLP|fedAvg>.py [-h] [-T T] [-C C] [-E E] [-B B] [-cls CLS]
+
+options:
+  -h, --help  show this help message and exit
+  -T T        rounds of training T
+  -C C        number of clients C
+  -E E        the number of local epochs E
+  -B B        local batch size B
+  -cls CLS    binary (b) or multclass (mc) classification
+```
 
 ## References
 - src/multitask_mlp
@@ -32,4 +61,3 @@
 
 - src/rf
     - [scikit-learn]( https://scikit-learn.org/stable/model_persistence.html)
-    - 
