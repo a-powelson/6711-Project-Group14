@@ -3,6 +3,97 @@
 
 ## Contents
 
+```
+.
+├── charts
+│   ├── compare_mlp
+│   │   ├── comparison_mlp_vs_fedavg_binary_confusion.png
+│   │   ├── comparison_mlp_vs_fedavg_binary_overall.png
+│   │   ├── comparison_mlp_vs_fedavg_binary_per_class_f1.png
+│   │   ├── comparison_mlp_vs_fedavg_binary_roc.png
+│   │   ├── comparison_mlp_vs_fedavg_binary_training_curves_and_time.png
+│   │   ├── comparison_mlp_vs_fedavg_multiclass_confusion.png
+│   │   ├── comparison_mlp_vs_fedavg_multiclass_overall.png
+│   │   ├── comparison_mlp_vs_fedavg_multiclass_per_class_f1.png
+│   │   └── comparison_mlp_vs_fedavg_multiclass_training_curves_and_time.png
+│   ├── compare_models
+│   │   ├── comparison_binary_rf_vs_fedavg_confusion.png
+│   │   ├── comparison_binary_rf_vs_fedavg_overall.png
+│   │   ├── comparison_binary_rf_vs_fedavg_per_class_f1.png
+│   │   ├── comparison_binary_rf_vs_fedavg_roc.png
+│   │   ├── comparison_multiclass_rf_vs_fedavg_confusion.png
+│   │   ├── comparison_multiclass_rf_vs_fedavg_overall.png
+│   │   └── comparison_multiclass_rf_vs_fedavg_per_class_f1.png
+│   ├── dataset
+│   │   ├── dataset_class_distribution_binary.png
+│   │   ├── dataset_class_distribution_multiclass.png
+│   │   ├── dataset_throughput_binary.png
+│   │   ├── dataset_throughput_multiclass.png
+│   │   └── MDS_grid.png
+│   ├── fedAvg
+│   │   ├── fedavg_binary_confusion_matrix.png
+│   │   ├── fedavg_binary_metrics.csv
+│   │   ├── fedavg_binary_per_class_metrics.png
+│   │   ├── fedavg_binary_report.json
+│   │   ├── fedavg_binary_roc_curve.png
+│   │   ├── fedavg_binary_training_curves.png
+│   │   ├── fedavg_multiclass_confusion_matrix.png
+│   │   ├── fedavg_multiclass_metrics.csv
+│   │   ├── fedavg_multiclass_per_class_metrics.png
+│   │   ├── fedavg_multiclass_report.json
+│   │   └── fedavg_multiclass_training_curves.png
+│   ├── mlp
+│   │   ├── mlp_binary_confusion_matrix.png
+│   │   ├── mlp_binary_metrics.csv
+│   │   ├── mlp_binary_per_class_metrics.png
+│   │   ├── mlp_binary_report.json
+│   │   ├── mlp_binary_roc_curve.png
+│   │   ├── mlp_binary_training_curves.png
+│   │   ├── mlp_multiclass_confusion_matrix.png
+│   │   ├── mlp_multiclass_metrics.csv
+│   │   ├── mlp_multiclass_per_class_metrics.png
+│   │   ├── mlp_multiclass_report.json
+│   │   └── mlp_multiclass_training_curves.png
+│   └── rf
+│       ├── rf_binary_confusion_matrix.png
+│       ├── rf_binary_feature_importance.png
+│       ├── rf_binary_metrics.csv
+│       ├── rf_binary_per_class_metrics.png
+│       ├── rf_binary_report.json
+│       ├── rf_binary_roc_curve.png
+│       ├── rf_multiclass_confusion_matrix.png
+│       ├── rf_multiclass_feature_importance.png
+│       ├── rf_multiclass_metrics.csv
+│       ├── rf_multiclass_per_class_metrics.png
+│       └── rf_multiclass_report.json
+├── data
+│   └── WSN-DS.csv
+├── README.md
+└── src
+    ├── compare_models.py
+    ├── mlp
+    │   ├── compare_mlp.py
+    │   ├── evaluate_centralized_mlp.py
+    │   ├── evaluate_fedAvg.py
+    │   ├── main_fedAvg.py
+    │   ├── main_MLP.py
+    │   └── mlp_model.py
+    ├── multitask_mlp
+    │   ├── args.py
+    │   ├── localize.py
+    │   ├── main_fedAvg.py
+    │   ├── mlp_model.py
+    │   └── preprocess.py
+    ├── preprocessing
+    │   ├── args.py
+    │   ├── dataset_analysis.py
+    │   └── preprocess.py
+    ├── requirements.txt
+    └── rf
+        ├── evaluate_rf.py
+        └── rf_model.py
+```
+
 The project is divided into the following directories:
 - **charts**: contains figures of various evaluation results
 - **data**: contains the WSN-DS dataset in a csv
