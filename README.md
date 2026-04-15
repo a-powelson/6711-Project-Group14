@@ -22,6 +22,7 @@ While previous works have focused on classifying jamming attacks using ML and so
     │   ├── args.py                       # Argument parser
     │   ├── localize.py                   # Node localization script
     │   ├── main_fedAvg.py                # Multi-task MLP with FedAvg training
+    │   ├── main_MLP.py                   # Multi-task MLP with centralized training
     │   ├── mlp_model.py                  # Multi-task MLP model source code
     │   └── preprocess.py                 # Preprocessing with added localization features
     ├── preprocessing/                    # Data preprocessing and analysis scripts
