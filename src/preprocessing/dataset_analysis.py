@@ -12,14 +12,20 @@ import matplotlib.pyplot as plt
 
 os.makedirs('charts/dataset', exist_ok=True)
 
-# ── Load raw data ─────────────────────────────────────────────────────────────
+"""
+Load raw data 
+"""
 raw = pd.read_csv('data/wsn-ds.csv')
 raw.columns = raw.columns.str.strip().str.replace(' ', '_').str.replace('-', '_').str.replace('/', '_')
 
-# ── Binary and multiclass label columns ───────────────────────────────────────
+"""
+Binary and multiclass label columns
+"""
 raw['binary_label'] = raw['label'].apply(lambda x: 'Normal' if x == 'Normal' else 'Attack')
 
-# ── Chart 1: Class distribution — Binary ─────────────────────────────────────
+"""
+1. Class distribution — Binary
+"""
 binary_counts = raw['binary_label'].value_counts()
 
 plt.figure(figsize=(6, 5))
@@ -36,7 +42,9 @@ plt.savefig('charts/dataset/dataset_class_distribution_binary.png')
 plt.show()
 print(f"Binary class distribution:\n{binary_counts}\n")
 
-# ── Chart 2: Class distribution — Multiclass ─────────────────────────────────
+"""
+2. Class distribution — Multiclass
+"""
 multi_counts = raw['label'].value_counts()
 
 plt.figure(figsize=(8, 5))
@@ -53,7 +61,9 @@ plt.savefig('charts/dataset/dataset_class_distribution_multiclass.png')
 plt.show()
 print(f"Multiclass class distribution:\n{multi_counts}\n")
 
-# ── Chart 3: Throughput — Binary (Attack vs Normal) ───────────────────────────
+"""
+3. Throughput — Binary (Attack vs Normal)
+"""
 sent_b     = raw.groupby('binary_label')['DATA_S'].mean()
 received_b = raw.groupby('binary_label')['DATA_R'].mean()
 
@@ -71,7 +81,9 @@ plt.tight_layout()
 plt.savefig('charts/dataset/dataset_throughput_binary.png')
 plt.show()
 
-# ── Chart 4: Throughput — Multiclass (all classes) ────────────────────────────
+"""
+4. Throughput — Multiclass (all classes)
+"""
 sent_mc     = raw.groupby('label')['DATA_S'].mean()
 received_mc = raw.groupby('label')['DATA_R'].mean()
 
