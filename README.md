@@ -103,7 +103,7 @@ This chart shows that the Random Forest achieves excellent classification result
     - [matplotlib]( https://matplotlib.org/stable/tutorials/index.html)
     - [seaborn]( https://seaborn.pydata.org/generated/seaborn.heatmap.html)
 
-- save json 
+- others
     - [json module](https://docs.python.org/3/library/json.html)
     - [evaluation metrics](https://scikit-learn.org/stable/modules/model_evaluation.html)
     - [Keras - save/load models](https://keras.io/guides/serialization_and_saving/)
