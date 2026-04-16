@@ -50,9 +50,10 @@ options:
   -B B        local batch size B
   -cls CLS    binary (b) or multclass (mc) classification
 
-compare_models.py [-cls]
 rf_model.py [-cls]
-evaluate_centralized_mlp.py [-cls]
+
+Only run evaluate scripts after running the models:
+eg. compare_models.py [-cls]
 ```
 
 Example (train multitask MLP for binary classification (b) with 5 rounds of FedAvg using 30/100 clients):  
