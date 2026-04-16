@@ -49,6 +49,10 @@ options:
   -E E        the number of local epochs E
   -B B        local batch size B
   -cls CLS    binary (b) or multclass (mc) classification
+
+compare_models.py [-cls]
+rf_model.py [-cls]
+evaluate_centralized_mlp.py [-cls]
 ```
 
 Example (train multitask MLP for binary classification (b) with 5 rounds of FedAvg using 30/100 clients):  
@@ -74,7 +78,6 @@ This chart shows that the Random Forest achieves excellent classification result
     - [shaoxiongji](https://github.com/shaoxiongji/federated-learning)
     - [TensorFlow](https://www.tensorflow.org/api_docs/python/tf/keras)
     - [AbuHamza773](https://github.com/AbuHamza773/Federated-Learning-with-LSTM-for-Intrusion-Detection-in-IoT/blob/main/preprocess_custom.py)
-    -[Keras - save/load models](https://keras.io/guides/serialization_and_saving/)
     - localize.py
         - [ChatGPT prompt: how to convert inter-pair distances into 2D plot?](chatgpt.com)
         - [Reddit](https://www.reddit.com/r/algorithms/comments/cx1lpl/creating_a_grid_of_nodes_using_only_the_distance/)
@@ -91,4 +94,17 @@ This chart shows that the Random Forest achieves excellent classification result
         - [WSN-Project](https://github.com/m-zeeshan555/WSN-DS/blob/main/Wireless%20Sensor%20Network%20Project%20Notebook.pdf)
         - [SciKit Learn](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
 - src/rf
-    - [scikit-learn]( https://scikit-learn.org/stable/model_persistence.html)
+    - [scikit-learn](https://scikit-learn.org/stable/model_persistence.html)
+    - [algorithm](https://www.geeksforgeeks.org/machine-learning/random-forest-algorithm-in-machine-learning/)
+    - [rf-classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
+
+- charts
+    - [matplotlib]( https://matplotlib.org/stable/tutorials/index.html)
+    - [seaborn]( https://seaborn.pydata.org/generated/seaborn.heatmap.html)
+
+- save json 
+    - [json module](https://docs.python.org/3/library/json.html)
+    - [evaluation metrics](https://scikit-learn.org/stable/modules/model_evaluation.html)
+    - [Keras - save/load models](https://keras.io/guides/serialization_and_saving/)
+    - [ChatGPT Prompt: How to save history along with ML model](chatgpt.com)
+
